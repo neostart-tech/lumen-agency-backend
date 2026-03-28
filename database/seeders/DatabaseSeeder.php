@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Lien;
+use App\Models\Contact;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +15,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Superadmin
+        User::create([
+            'nom' => 'Super',
+            'prenom' => 'Admin',
+            'email' => 'admin@lumen-agency.com',
+            'telephone' => null,
+            'password' => Hash::make('password'),
+            'role' => 'superadmin',
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Default Lien row
+        Lien::create([
+            'instagram' => null,
+            'facebook' => null,
+            'x' => null,
+            'tiktok' => null,
+        ]);
+
+        // Default Contact row
+        Contact::create([
+            'telephone1' => null,
+            'telephone2' => null,
+            'email' => null,
+            'adresse' => null,
         ]);
     }
 }
