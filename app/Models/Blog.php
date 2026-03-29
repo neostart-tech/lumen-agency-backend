@@ -14,4 +14,9 @@ class Blog extends Model
         'contenu',
         'categorie',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'id_blog');
+    }
 }
